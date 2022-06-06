@@ -1,0 +1,59 @@
+<button mat-icon-button class="close-button" (click)="close()">
+    <mat-icon class="close-icon">close</mat-icon>
+  </button>
+<div *ngIf="myBrowser()=='Chrome' && !isMobile()" class="main-permission-block">
+    <img alt="" aria-hidden="true" src="assets/images/permissions_block.png">
+    <div class="heading-text">Your camera is blocked</div>
+    <div class="sub-text">Meet needs access to your camera. To use Meet,
+        <ul class="instruction-main">
+            <li class="instruction">Click the Camera blocked icon <img alt="" aria-hidden="true" style="vertical-align: middle; width: auto;" src="//www.gstatic.com/meet/ic_blocked_camera_7ca83311f629f64699401950ceaed61e.svg"> in your browser's address bar</li>
+            <li class="instruction">Allow access and then refresh the page</li>
+        </ul>
+    </div>
+</div>
+<div *ngIf="myBrowser()=='Firefox' && !isMobile()"  class="main-permission-block">
+    <div class="heading-text">Your camera is blocked</div>    
+    <img alt="" aria-hidden="true" src="assets/images/firefox_permission_blocks.png">
+    <div class="sub-text">Meet needs access to your camera. To use Meet,
+        <ol
+         class="instruction-main">
+            <li class="instruction">Click the permissions <img style="width: auto;" alt="Fx87PermissionsIcon" data-original-src="https://user-media-prod-cdn.itsre-sumo.mozilla.net/uploads/gallery/images/2021-04-08-15-01-07-0d8c5a.png" src="https://user-media-prod-cdn.itsre-sumo.mozilla.net/uploads/gallery/images/2021-04-08-15-01-07-0d8c5a.png" title=""> icon that displays in the address bar on the left. </li>
+            <li class="instruction">Click the X next to Allowed , Allowed Temporarily, Blocked or Blocked Temporarily to clear the status so that Firefox will ask again for permission when you next visit the site. </li>
+            <li class="instruction">Next time, When site ask for camera and microphone permission please allow to continue.</li>
+        </ol>
+    </div>
+</div>
+<div *ngIf="myBrowser()=='Firefox' && isMobile()" class="main-permission-block">
+    <div class="heading-text" style="padding-top: 0;">Your camera is blocked</div>
+    <div class="sub-text"><span style="font-weight: normal;">Meet needs access to your camera. To use Meet,</span>
+        <ol class="instruction-main">
+            <li class="instruction">Click the Lock icon in your browser's address bar
+                <br>
+                <img src="assets/images/chrome_android_1.png">
+            </li>
+            <li class="instruction">Allow Both microphone and camera permissions 
+                <br>
+                <img src="assets/images/chrome_android_3.png">
+            </li>
+        </ol>
+    </div>
+</div>
+<div *ngIf="myBrowser()=='Chrome' && isMobile()" class="main-permission-block">
+    <div class="heading-text" style="padding-top: 0;">Your camera is blocked</div>
+    <div class="sub-text"><span style="font-weight: normal;">Meet needs access to your camera. To use Meet,</span>
+        <ol class="instruction-main">
+            <li class="instruction">Click the Lock icon in your browser's address bar
+                <br>
+                <img src="assets/images/chrome_android_1.png">
+            </li>
+            <li class="instruction">Click the Permissions 
+                <br>
+                <img src="assets/images/chrome_android_2.png">
+            </li>
+            <li class="instruction">Allow Both microphone and camera permissions 
+                <br>
+                <img src="assets/images/chrome_android_3.png">
+            </li>
+        </ol>
+    </div>
+</div>

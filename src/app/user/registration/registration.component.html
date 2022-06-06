@@ -1,0 +1,297 @@
+<mat-spinner *ngIf="loadSpinner"></mat-spinner>
+
+<div class="center">
+  <mat-card>
+    <mat-card-header>
+      <div mat-card-avatar class="example-header-image"></div>
+      <mat-card-title>Registration</mat-card-title>
+      <mat-card-subtitle>Join now..</mat-card-subtitle>
+    </mat-card-header>
+    <form
+      class="example-form"
+      [formGroup]="form"
+      name="form"
+      (ngSubmit)="onRegister(form)"
+    >
+      <mat-card-content style="text-align: center">
+        <mat-form-field class="example-full-width">
+          <mat-label>First Name</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="fnamectrl"
+            id="fname"
+            [(ngModel)]="fname"
+            name="fname"
+            autocomplete="off"
+            required
+            [errorStateMatcher]="matcher"
+            tabindex="1"
+          />
+          <button
+            mat-button
+            *ngIf="fname"
+            tabindex="-1"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="fname = ''"
+          >
+            <mat-icon aria-hidden="false" aria-label="Example home icon"
+              >close</mat-icon
+            >
+          </button>
+
+          <mat-error *ngIf="fnamectrl.touched && fnamectrl.invalid">
+            <div *ngIf="fnamectrl.errors.required">This field is required</div>
+            <div
+              *ngIf="
+                fnamectrl.errors.pattern &&
+                !fnamectrl.errors.maxlength &&
+                !fnamectrl.errors.required
+              "
+            >
+              Only alaphabetic allowed
+            </div>
+            <div
+              *ngIf="fnamectrl.errors.maxlength && !fnamectrl.errors.required"
+            >
+              only 15 characters required
+            </div>
+            <div
+              *ngIf="
+                fnamectrl.errors.cannotContainSpace &&
+                !fnamectrl.errors.pattern &&
+                !fnamectrl.errors.maxlength &&
+                !fnamectrl.errors.required
+              "
+            >
+              firstname can not contain space.
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="example-form-field">
+          <mat-label>Last Name</mat-label>
+          <input
+            matInput
+            type="text"
+            formControlName="lnamectrl"
+            id="lname"
+            [(ngModel)]="lname"
+            name="lname"
+            autocomplete="off"
+            required
+            [errorStateMatcher]="matcher"
+            tabindex="2"
+          />
+          <button
+            mat-button
+            *ngIf="lname"
+            tabindex="-1"
+            matSuffix
+            mat-icon-button
+            aria-label="Clear"
+            (click)="lname = ''"
+          >
+            <mat-icon aria-hidden="false" aria-label="Example home icon"
+              >close</mat-icon
+            >
+          </button>
+
+          <mat-error *ngIf="lnamectrl.touched && lnamectrl.invalid">
+            <div *ngIf="lnamectrl.errors.required">This field is required</div>
+            <div
+              *ngIf="
+                lnamectrl.errors.pattern &&
+                !lnamectrl.errors.maxlength &&
+                !lnamectrl.errors.required
+              "
+            >
+              Only alaphabetic allowed
+            </div>
+            <div
+              *ngIf="lnamectrl.errors.maxlength && !lnamectrl.errors.required"
+            >
+              Only 15 characters required
+            </div>
+            <div
+              *ngIf="
+                lnamectrl.errors.cannotContainSpace &&
+                !lnamectrl.errors.pattern &&
+                !lnamectrl.errors.maxlength &&
+                !lnamectrl.errors.requiredrm
+              "
+            >
+              lastname can not contain space.
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <br />
+
+        <div id="upload-profile">
+          <label style="margin: auto 10px">Select Profile Picture: </label>
+          <input
+            #imageInput
+            style="display: none; padding-left: 65px"
+            type="file"
+            accept=".jpg,.jpeg,.png"
+            (change)="onFileSelected($event)"
+            required
+            forControlName="profilePhoto"
+            id="file"
+          />
+
+          <button
+            mat-raised-button
+            color="primary"
+            type="button"
+            (click)="imageInput.click(); uploadCheck()"
+            #btn
+            tabindex="3"
+          >
+            Upload
+          </button>
+          <mat-error *ngIf="uploadErr && !fileGreaterErr">
+            Image upload is required
+          </mat-error>
+          <mat-error *ngIf="fileGreaterErr">
+            Image size should be less than 2 mb
+          </mat-error>
+          <mat-error *ngIf="fileTypeErr">
+            Only jpg, jpeg and png file type allowed.
+          </mat-error>
+        </div>
+        <div id="upload-profile-img" style="display: none">
+          <img [src]="url" alt="Profile Picture" class="uploded-image" />
+        </div>
+
+        <br />
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Email</mat-label>
+          <input
+            type="email"
+            matInput
+            formControlName="emailctrl"
+            [(ngModel)]="email"
+            name="email"
+            placeholder="Ex. abc@gmail.com"
+            required
+            [errorStateMatcher]="matcher"
+            tabindex="4"
+          />
+          <mat-error *ngIf="emailctrl.touched && emailctrl.invalid">
+            <div *ngIf="emailctrl.hasError('required')">
+              This field is required
+            </div>
+            <div
+              *ngIf="
+                emailctrl.hasError('email') ||
+                (emailctrl.hasError('pattern') &&
+                  !emailctrl.hasError('required'))
+              "
+            >
+              Email address is invalid
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field
+          class="example-form-field tel-field"
+          style="width: 201px"
+        >
+          <mat-label>Mobile No</mat-label>
+          <span matPrefix>+91 &nbsp;</span>
+          <input
+            type="tel"
+            matInput
+            placeholder="9876543210"
+            name="mobileno"
+            required
+            formControlName="mobileno"
+            [errorStateMatcher]="matcher"
+            maxlength="10"
+            tabindex="5"
+          />
+          <mat-error *ngIf="mobileno.touched && mobileno.invalid">
+            <div *ngIf="mobileno.hasError('required')">
+              This field is required
+            </div>
+            <div *ngIf="mobileno.hasError('pattern')">Invalid mobile number</div>
+          </mat-error>
+        </mat-form-field>
+        <br />
+        <mat-form-field class="pass-field">
+          <mat-label>Password </mat-label>
+          <input
+            matInput
+            [type]="hide ? 'password' : 'text'"
+            name="password"
+            required
+            formControlName="password"
+            [errorStateMatcher]="matcher"
+            tabindex="6"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide = !hide"
+            tabindex="-1"
+            type="button"
+          >
+            <mat-icon>{{ hide ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="password.touched && password.invalid">
+            <div *ngIf="password.hasError('required')">
+              This field is required
+            </div>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field class="pass-field">
+          <mat-label>Confirm Password </mat-label>
+          <input
+            matInput
+            [type]="hide1 ? 'password' : 'text'"
+            name="confirmpassword"
+            required
+            formControlName="confirmpassword"
+            [errorStateMatcher]="matcher"
+            tabindex="7"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hide1 = !hide1"
+            tabindex="-1"
+            type="button"
+          >
+            <mat-icon>{{ hide1 ? "visibility_off" : "visibility" }}</mat-icon>
+          </button>
+          <mat-error *ngIf="confirmpassword.touched && confirmpassword.invalid">
+            <div *ngIf="confirmpassword.hasError('required')">
+              This field is required
+            </div>
+            <div *ngIf="confirmpassword.hasError('notmatched')">
+              Confirm password not matched
+            </div>
+          </mat-error>
+          <!-- <mat-error *ngIf="confirmpassword.hasError('notmatched')">NOT Matched</mat-error> -->
+        </mat-form-field>
+
+        <br />
+      </mat-card-content>
+
+      <mat-card-actions>
+        <button
+          [disabled]="form.invalid || !button"
+          mat-mini-fab
+          color="primary"
+          style="float: right"
+          type="submit"
+          tabindex="8"
+        >
+          <mat-icon>arrow_forward</mat-icon>
+        </button>
+      </mat-card-actions>
+    </form>
+  </mat-card>
+</div>

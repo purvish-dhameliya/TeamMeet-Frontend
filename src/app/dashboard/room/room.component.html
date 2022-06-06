@@ -1,0 +1,157 @@
+<mat-spinner *ngIf="loadSpinner"></mat-spinner>
+<img src="assets/images/logo.svg" class="room-logo">
+<div class="main-content" (window:resize)="arrange()">
+  <div id="video-chat-container" #main_video_div>
+    <div id="Dish" class="mainVideo" (resized)="arrange()" #videos>
+      <div class="Camera" id="localVideoDiv">
+        <video
+          id="localVideo"
+          autoplay
+          muted="true"
+          playsinline
+          #localvideo
+        ></video>
+        <div id="localimgdiv" class="video-img">
+          <img src="" alt="" srcset="" />
+        </div>
+        <span class="videoLabel" id="locallabel"></span>
+        <button class="fullscreen-button" (click)="fullscreenvideo(localvideo)">
+          <mat-icon> fullscreen</mat-icon>
+        </button>
+      </div>
+      <!-- Remote videos get appended here -->
+    </div>
+    <div class="btn-control" #btn_ctrl id="btn-control">
+      <button matTooltip="{{islocalplay?'Turn camera off':'Turn camera on'}} (CTRL + ALT + 1)"
+        mat-fab
+        [ngStyle]="{'color':islocalplay ? 'black' : '#dc0025' }"
+        type="button"
+        (click)="playStop()"
+        class="my-button"
+      >
+        <mat-icon>{{ islocalplay ? "videocam" : "videocam_off" }}</mat-icon>
+      </button>
+      <button matTooltip="{{islocalmuted?'Turn mice on':'Turn mice off'}} (CTRL + ALT + 2)"
+        mat-fab 
+        [ngStyle]="{'color':islocalmuted ? '#dc0025' : 'black' }"
+        type="button"
+        (click)="muteUnmute()"
+        class="my-button"
+      >
+        <mat-icon>{{ islocalmuted ? "mic_off" : "mic" }}</mat-icon>
+      </button>
+      <button matTooltip="{{isScreenShared?'Turn screen share off':'Turn screen share on'}}"
+        *ngIf="!isMobile()"
+        id="screen-share"
+        mat-fab 
+        [ngStyle]="{'color':isScreenShared ? 'black' : '#dc0025' }"
+        type="button"
+        (click)="screenshare()"
+        class="my-button"
+      >
+        <mat-icon>{{
+          isScreenShared ? "screen_share" : "stop_screen_share"
+        }}</mat-icon>
+      </button>
+      <button matTooltip="{{isChatOn?'Hide chat':'Show chat'}} (CTRL + ALT + 3)"
+        mat-fab 
+        [ngStyle]="{'color':isChatOn ? 'black' : '#dc0025' }"
+        type="button"
+        (click)="chat()"
+        [matBadge]="unreadmessagesgcount"
+        [matBadgeHidden]="isChatOn || unreadmessagesgcount == 0"
+        matBadgePosition="after"
+        matBadgeColor="accent"
+        class="my-button"
+      >
+        <mat-icon>{{ isChatOn ? "chat" : "speaker_notes_off" }}</mat-icon>
+      </button>
+
+      <button matTooltip="{{userslist?'Hide participants':'show participants'}}"
+        mat-fab 
+        [ngStyle]="{'color':userslist ? 'black' : '#dc0025' }"
+        type="button"
+        (click)="showuserslist()"
+        class="my-button"
+      >
+        <mat-icon>{{ userslist ? "group" : "group_off" }}</mat-icon>
+      </button>
+      <button matTooltip="Leave room"
+        mat-fab 
+        [ngStyle]="{'color': '#dc0025' }"
+        type="button"
+        (click)="hangup()"
+        class="my-button"
+      >
+        <mat-icon>call_end</mat-icon>
+      </button>
+      <!-- <button mat-fab color="warn" type="button" (click)="sendMessage()">
+              <mat-icon>send</mat-icon>
+              </button> -->
+    </div>
+  </div>
+  <div id="msg-container" style="display: none">
+    <div class="chat-messages" [style.display]="userslist ? 'none' : 'flex'">
+      <div class="welcome-chat">
+        <span class="closeBtn">
+          <button mat-icon-button matRipple  (click)="chat()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+        <h1>TeamMeet</h1>
+        <p style="opacity: 0.8">Chat On Room {{ roomName }}</p>
+      </div>
+      <div class="chat-messages-show-container">
+        <ul class="chat-messages-show-list" id="message-list"></ul>
+      </div>
+      <div class="chat-messages-create-container">
+        <input
+          class="chat-messages-create-input"
+          id="msgbox"
+          tabindex="1"
+          placeholder="Type a message.."
+          [(ngModel)]="message"
+          type="text"
+          (keyup)="handleKeyUp($event)"
+          autofocus
+        />
+        <input type="file" id="msgfile" (change)="filesend($event)" style="display: none;" #attachment>
+        <button tabindex="2" id="attach" matRipple (click)="attachment.click()">
+          <mat-icon>attach_file</mat-icon>
+        </button>
+        <button matRipple
+          type="submit"
+          tabindex="2"
+          id="send"
+          (click)="sendMessage(message)"
+        >
+          <mat-icon>send</mat-icon>
+        </button>
+      </div>
+    </div>
+    <div [style.display]="!userslist ? 'none' : 'flex'" class="users-list-main">
+      <div class="welcome-chat">
+        <span class="closeBtn">
+          <button mat-icon-button (click)="showuserslist()">
+            <mat-icon>close</mat-icon>
+          </button>
+        </span>
+        <h1>TeamMeet</h1>
+        <p style="opacity: 0.8">Participants  {{numberofparticipants}}</p>
+        <button *ngIf="isroomcreator" mat-raised-button color="accent" (click)="muteall()">
+          <span class="mute-all-button">Mute All
+            <mat-icon>
+              <img src="assets/images/muteall.png" class="mute-all-img" />
+            </mat-icon>
+         </span>
+        </button>
+      </div>
+      <div class="users-list-container">
+        <ul class="user-list" id="user-list"></ul>
+      </div>
+    </div>
+  </div>
+</div>
+<audio id="callend-audio">
+  <source src="assets/call_end.mp3" />
+</audio>

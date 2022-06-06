@@ -1,0 +1,86 @@
+/* Container */
+    #Dish {
+        display: flex;
+        align-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        justify-content: center;
+        vertical-align: middle;
+        position: absolute;
+        left: 0px;
+        bottom: 0px;
+        top: 0px;
+        right: 0px;
+    }
+/* Camera */
+    #Dish .Camera {
+        box-sizing: border-box;
+        position: relative;
+        vertical-align: middle;
+        align-self: center;
+        border-radius: 10px;
+        overflow: hidden;
+        display: inline-block;
+        box-shadow: 0px 12px 22px rgba(0, 0, 0, 0.4);
+        background: linear-gradient(315deg, #b8c6db 0%, #f5f7fa 74%);
+        animation: show 0.4s ease;
+    }
+
+    .Camera div{
+        animation: show 0.4s ease;
+    }
+
+    .Camera video{
+        animation: show 0.4s ease;
+    }
+
+/* Details (optional) */
+    /* Aspect Ratio Number */
+        /* #Dish div:after {
+            color: #aaa;
+            font-size: 13px;
+            font-family: Arial, Helvetica, sans-serif;
+            position: absolute;
+            bottom: 20px;
+            right: 23px;
+            font-weight: 100;
+            content: "4:3";
+            display: block;
+        } */
+    /* Gray Diagonal */
+        /* #Dish div:before {
+            position: absolute;
+            height: 1px;
+            background: #ddd;
+            width: 100%;
+            transform: rotate(-37deg);
+            top: 50%;
+            font-weight: 100;
+            content: "4:3";
+            display: block;
+            ;
+        } */
+/* Animation */
+    @keyframes show {
+        0% {
+            opacity: 0;
+            transform: scale(0.4) translateY(20px);
+        }
+        100% {
+            opacity: 1;
+            transform: scale(1) translateY(0);
+        }
+    }
+
+    @keyframes chat {
+        0% {
+            opacity: 0;
+        }
+        100%{
+            opacity: 100%;
+        }
+    }
+    /* #localVideoDiv{
+        width: auto;
+        height: auto;
+    } */

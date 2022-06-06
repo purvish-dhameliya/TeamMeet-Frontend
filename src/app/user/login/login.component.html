@@ -1,0 +1,75 @@
+<mat-spinner *ngIf="loadSpinner"></mat-spinner>
+<div class="center">
+    <mat-card class="example-card" *ngIf="login">
+        <mat-card-header>
+          <div mat-card-avatar class="example-header-image"></div>
+          <mat-card-title>Login</mat-card-title>
+          <mat-card-subtitle>Thanks for see you again..</mat-card-subtitle>
+        </mat-card-header>
+        
+        <mat-card-content>
+          <form class="example-form" #f="ngForm" [formGroup]="form" name="form" (ngSubmit)="onLogin(f)">
+            <mat-card-content>
+              <mat-form-field class="example-full-width">
+                <mat-label>Email</mat-label>
+                <input type="email" matInput formControlName="emailctrl" name="email" placeholder="Ex. abc@gmail.com" required [errorStateMatcher]="matcher" >
+                <mat-error *ngIf="emailctrl.touched && emailctrl.invalid">
+                  <div *ngIf="emailctrl.hasError('required')">This field is required</div>
+                  <div *ngIf="emailctrl.hasError('email') || emailctrl.hasError('pattern') && !emailctrl.hasError('required')">Email address is invalid</div>
+
+                </mat-error>
+              </mat-form-field>
+              <br>
+              <mat-form-field>
+                <mat-label>Password </mat-label>
+                <input matInput [type]="hide ? 'password' : 'text'" name="password" required formControlName="password" [errorStateMatcher]="matcher">
+                <button mat-icon-button matSuffix (click)="hide = !hide" tabindex="-1" type="button">
+                <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+                </button>
+                <mat-error *ngIf="password.touched && password.invalid">
+                  <div *ngIf="password.hasError('required')">This field is required</div>
+                </mat-error>
+            </mat-form-field>
+            <br>
+            
+            </mat-card-content>
+      
+            <mat-card-actions>
+              <span class="forgot-text" (click)="forgotshow()">Forgot password?</span>
+              <button [disabled]="form.invalid" mat-mini-fab color="primary" style="float: right;" type="submit">
+                <mat-icon>arrow_forward</mat-icon>
+              </button>
+            </mat-card-actions>
+          </form>
+        </mat-card-content>
+    </mat-card>
+    <!-- forgot password  -->
+    <mat-card class="example-card" *ngIf="forgotpassword">
+      <mat-card-header>
+        <mat-card-title>Forgot Password</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+          <mat-card-content>
+            <mat-form-field class="example-full-width">
+              <mat-label>Email</mat-label>
+              <form [formGroup]="resetForm">
+              <input type="email" matInput formControlName="email" name="email" placeholder="Ex. abc@gmail.com" required [errorStateMatcher]="matcher" >
+              </form>
+              <mat-error *ngIf="resetemail.touched && resetemail.invalid">
+                <div *ngIf="resetemail.hasError('required')">This field is required</div>
+                <div *ngIf="resetemail.hasError('email') || resetemail.hasError('pattern') && !resetemail.hasError('required')">Email address invalid</div>
+
+              </mat-error>
+            </mat-form-field>
+          <br>
+          
+          </mat-card-content>
+    
+          <mat-card-actions>
+            <button [disabled]='resetForm.invalid' (click)="sendforgotlink(resetemail.value)"  mat-mini-fab color="primary" style="float: right;" type="button">
+              <mat-icon>arrow_forward</mat-icon>
+            </button>
+          </mat-card-actions>
+      </mat-card-content>
+    </mat-card>
+</div>

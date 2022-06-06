@@ -1,0 +1,326 @@
+
+  <nav class="navbar navbar-expand-lg navbar-light bg-light position-fixed w-100 shadow-sm rounded" style="top: 0; z-index: 20;">
+    <a class="navbar-brand" [routerLink]="['/']" style="cursor: pointer;">
+      <img class="logoimg" src="assets/images/logo.svg" alt="TeamMeet" />
+      <!-- <h2 class="logo">TeamMeet</h2> -->
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+  
+    <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+      <ul class="navbar-nav ml-auto mt-2 mt-lg-0">
+        <li class="nav-item active" style="cursor: pointer;">
+          <a class="nav-link"  [routerLink]="['/login']">Login <span class="sr-only">(current)</span></a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+  <div class="container starting-container">
+    <div class="row align-items-center">
+        <div class="col-lg-6 col-md-6">
+            <div>
+                <img src="assets/images/vec.png" alt="" class="img-fluid vec-img">
+            </div>
+        </div>
+        <div class="col-lg-6 col-md-6 w-80">
+            <div class="mt-lg-0 mt-5 mx-4 d-flex" style="justify-content: center;">
+                <div class="my-4">
+                  <div class="row">
+                    <div class="col-xl-8">
+                        <h3 class="mb-4 hero-text">Video conference</h3>
+                    </div>
+                </div>
+                <p class="hero-text-p">We provide best quality of video calls.</p>
+                <p class="hero-text-p">Share the Vision.</p>
+                <p class="hero-text-p">Bringing People Together.</p>
+                  <button
+                    type="button"
+                    class="btn-discover active col-md-12 mx-auto my-4"
+                    [routerLink]="['/registration']"
+                  >
+                    Discover
+                  </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!------------------------------------------------------------------ scroll text ---------------------------------------------------------------- -->
+<!-- <div class="container-fluid mt-5 py-3 scroll-text" >
+  <hr />
+    <p class="text-center">See what you can do with TeamMeet</p>
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="20"
+      height="20"
+      fill="currentColor"
+      class="bi bi-arrow-down-short arrow"
+      viewBox="0 0 20 20"
+    >
+      <path
+        fill-rule="evenodd"
+        d="M8 4a.5.5 0 0 1 .5.5v5.793l2.146-2.147a.5.5 0 0 1 .708.708l-3 3a.5.5 0 0 1-.708 0l-3-3a.5.5 0 1 1 .708-.708L7.5 10.293V4.5A.5.5 0 0 1 8 4z"
+      />
+    </svg>
+</div> -->
+
+<section class="feature custom-margin" id="feature" fragment="feature">
+  <img src="assets/images/feature-pattern.png" alt="" class="feature-pattern" />
+  <div class="container">
+    <div class="heading">
+      <h3 class="text-center mb-5">
+        <strong>Awesome</strong> Feature
+      </h3>
+    </div>
+    <div class="container">
+      <div class="row pb-lg-5">
+        <div class="col-lg-4 col-md-6">
+          <div class="single-feature text-center">
+            <img src="assets/images/anywhere.jpg" alt="" class="mb-4 w-100" />
+            <h3 class="mb-4">Meet from anywhere</h3>
+            <p>
+              TeamMeet, where you can present anything, or just catch
+              up face to face.
+            </p>
+            <p>Creativity from anywhere and anyhow.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6">
+          <div class="single-feature text-center">
+            <img src="assets/images/facetoface.jpg" alt="" class="mb-4 w-100" />
+            <h3 class="mb-4">Meet clearly and face to face</h3>
+            <p>
+              Team Meet adjusts to your network speed,ensuring high quality
+              video calls wherever you are.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 col-md-6 mt-lg-0 mt-4">
+          <div class="single-feature text-center">
+            <img src="assets/images/screenshare.jpg" alt="" class="mb-4 w-100" />
+            <h3 class="mb-4">Screen share</h3>
+            <p>Flowless Screen sharing.</p>
+            <p>Share your desktop window, Browser Tab, Application Window.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 mt-lg-4 col-md-6 mt-4">
+          <div class="single-feature text-center">
+            <img src="assets/images/image.jpg" alt="" class="mb-4 w-100" />
+            <h3 class="mb-4">Chat</h3>
+            <p>
+              Share your opinion and have fun with your team. Send emojis in a group chat.
+            </p>
+          </div>
+        </div>
+        <div class="col-lg-4 mt-lg-4 col-md-6 mt-4">
+          <div class="single-feature text-center">
+            <img src="assets/images/safe.jpg" alt="" class="mb-5 w-100" />
+            <h3 class="mb-4">Meet safe</h3>
+            <p>TeamMeet,wherever you are its secure and safer.</p>
+          </div>
+        </div>
+        <div class="col-lg-4 mt-lg-4 col-md-6 mt-4">
+          <div class="single-feature text-center">
+            <img src="assets/images/morethenmeeting.jpg" alt="" class="mb-5 w-100" />
+            <h3 class="mb-4">More than meetings.</h3>
+            <p>
+              Have a Chat, Meet, Fun. Show productiovity on TeamMeet.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- our team -->
+
+<div class="bg-light py-5">
+  <div class="container py-5">
+    <div class="row mb-4">
+      <div class="col-lg-5">
+        <h2 class="display-4 font-weight-light">
+          Our team
+        </h2>
+        <p class="font-italic text-muted">
+          Coming together, sharing together, working together, succeeding together.
+        </p>
+      </div>
+    </div>
+
+    <div class="row text-center align-items-center">
+      <!-- Team item-->
+      <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4">
+          <img
+            src="assets/images/avtar3.png"
+            alt=""
+            width="100"
+            class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+          />
+          <h5 class="mb-0">Dhanani Jenish</h5>
+          <span class="small text-uppercase text-muted">CEO - Founder</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-facebook-f"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-instagram"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End-->
+
+      <!-- Team item-->
+      <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4">
+          <img
+            src="assets/images/avtar2.png"
+            alt=""
+            width="100"
+            class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+          />
+          <h5 class="mb-0">Rahul Ghoghari</h5>
+          <span class="small text-uppercase text-muted">CEO - Founder</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-facebook-f"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-instagram"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End-->
+
+      <!-- Team item-->
+      <div class="col-xl-3 col-sm-6 mb-5">
+        <div class="bg-white rounded shadow-sm py-5 px-4">
+          <img
+            src="assets/images/avtar1.png"
+            alt=""
+            width="100"
+            class="img-fluid rounded-circle mb-3 img-thumbnail shadow-sm"
+          />
+          <h5 class="mb-0">Purvish Dhameliya</h5>
+          <span class="small text-uppercase text-muted">CEO - Founder</span>
+          <ul class="social mb-0 list-inline mt-3">
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-facebook-f"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-twitter"></i></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"
+                ><i class="fa fa-instagram"></i
+              ></a>
+            </li>
+            <li class="list-inline-item">
+              <a href="#" class="social-link"><i class="fa fa-linkedin"></i></a>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <!-- End-->
+    </div>
+  </div>
+</div>
+<!-- /about us -->
+<!-- feedback form start -->
+
+<div class="container-fluid" style="background: #eee;">
+<div class="col-lg-5 col-lg-offset-4 col-md-6 mx-auto col-md-offset-3 col-sm-10 col-sm-offset-1 col-xs-12 feedbackBox">
+  <h3 class="text-center">Contact Us</h3>
+  <div class="alert alert-success" *ngIf="formmsg">
+    {{formmsg}}
+  </div>
+  <form [formGroup]="feedbackForm" (ngSubmit)="sendFeedback()">
+
+    <div class="form-group clearfix">
+        <label for="name">Name</label>
+
+        <input type="text" matInput class="form-control" formControlName="name" placeholder="Write your name" required  [ngClass]="{'error-field':name.touched && name.errors}" maxlength="15" />
+        <div *ngIf="name.touched && name.errors" class="has-error">
+            <div *ngIf="name.hasError('required')">Name is required.</div>
+            <div *ngIf="name.hasError('pattern')">Only characters allowed in name.</div>
+            <div *ngIf="!name.hasError('pattern') && name.hasError('maxlength')">Only 15 characters allowed in name.</div>
+        </div>
+    </div>
+    <div class="form-group clearfix">
+            <label for="name">Email</label>
+
+            <input type="text" class="form-control" formControlName="email" placeholder="Write your email" required [ngClass]="{'error-field':email.touched && email.errors}" />
+            <div *ngIf="email.touched && email.errors" class="has-error">
+                <div *ngIf="email.hasError('required')">Email is required.</div>
+                <div *ngIf="email.hasError('pattern')">Invalid Email.</div>
+            </div>
+        </div>
+    <div class="form-group clearfix">
+      <label for="name">Subject</label>
+
+            <input type="text" class="form-control" [ngClass]="{'error-field':subject.touched && subject.errors}" formControlName="subject" placeholder="Write your Subject" required/>
+            <div *ngIf="subject.touched && subject.errors" class="has-error">
+                <div *ngIf="subject.hasError('required')">Subject is required.</div>
+            </div>
+    </div>
+    <div class="form-group clearfix" >
+        <label for="msg">Please leave your feedback below</label>
+
+        <textarea class="form-control" formControlName="msg" rows="5" placeholder="Write your valuable feedback"
+            required [ngClass]="{'error-field':msg.touched && msg.errors}"></textarea>
+        <div *ngIf="msg.touched && msg.errors" class="has-error">
+            <div *ngIf="msg.hasError('required')">Message is required.</div>
+        </div>
+
+    </div>
+    <div class="form-group text-right" >
+        <button class="btn btn-primary pull-right" type="submit" [disabled]="feedbackForm.invalid">Submit</button>
+    </div>
+  </form>
+</div>    
+</div>
+<!-- feedback form end -->
+<!-- footer start -->
+<footer class="footer-area footer-light">
+  <img class="footer-logo" src="assets/images/logo.svg" alt="TeamMeet" />
+  <div class="mini-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="copyright-text">
+            <p>© 2021 <a href="./">TeamMeet</a>. All rights reserved.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- footer end -->

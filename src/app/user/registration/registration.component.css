@@ -1,0 +1,51 @@
+.example-card {
+  max-width: 400px;
+}
+
+.example-header-image {
+  background-image: url('https://img.icons8.com/ios/452/edit-user-male.png');
+  background-size: cover;
+}
+
+.center {
+  padding: 5%;
+  display: flex;
+  justify-content: center;
+}
+
+/* .example-form-field {
+    width: 200px;
+  } */
+
+.test{
+  border:  2px solid red;
+}
+mat-card-content mat-form-field{
+  margin: auto 10px;
+  width: 45% !important;
+}
+
+#upload-profile{
+  width:100%;
+  display: inline;
+  float:left;
+}
+
+
+.uploded-image{
+  width: 100px;
+  height: 100px;
+  padding: 5px;
+  border:1px solid #000;
+}
+
+#upload-profile-img{
+  margin-bottom: 5px;
+}
+
+@media screen and (max-width:480px) {
+  mat-card-content mat-form-field{
+    margin: auto 10px;
+    width: 100% !important;
+  }
+}

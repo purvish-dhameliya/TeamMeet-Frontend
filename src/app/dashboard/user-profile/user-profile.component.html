@@ -1,0 +1,81 @@
+<p>hello, <b>{{uservalue.fname}} {{uservalue.lname}}</b> !</p>
+<form [formGroup]="updateForm" (ngSubmit)="onUpdate(updateForm)">
+  <mat-dialog-content>
+  <mat-grid-list [cols]="cols" rowHeight="4:1">
+    <mat-grid-tile>
+      <mat-form-field class="update-field">
+        <mat-label>First Name</mat-label>
+        <input matInput type="text" id="fname" name="fname" formControlName="fname" autocomplete="off"
+          [value]="uservalue.fname" required>
+        <mat-error *ngIf="fname.touched && fname.invalid">
+          <div *ngIf="fname.errors.required">This field is required</div>
+          <div *ngIf="fname.errors.pattern">Only alaphabetic allowed</div>
+          <div *ngIf="fname.errors.maxlength">Only 15 characters required</div>
+          <div *ngIf="fname.errors.cannotContainSpace">firstname can not contain space.</div>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile>
+      <mat-form-field class="update-field">
+        <mat-label>Last Name</mat-label>
+        <input matInput type="text" formControlName="lname" id="lname" name="lname" autocomplete="off" required
+          [value]="uservalue.lname">
+        <mat-error *ngIf="lname.touched && lname.invalid">
+          <div *ngIf="lname.errors.required">This field is required</div>
+          <div *ngIf="lname.errors.pattern">Only alaphabetic allowed</div>
+          <div *ngIf="lname.errors.maxlength">Only 15 characters required</div>
+          <div *ngIf="lname.errors.cannotContainSpace">lastname can not contain space.</div>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+
+    <mat-grid-tile>
+      <mat-form-field class="update-field">
+        <mat-label>Mobile number</mat-label>
+        <span matPrefix>+91 &nbsp;</span>
+        <input type="tel" matInput placeholder="9876543210" name="mobile" required formControlName="mobile"
+          maxlength="10" [value]="uservalue.mobile">
+        <mat-error *ngIf="mobile.touched && mobile.invalid">
+          <div *ngIf="mobile.hasError('required')">This field is required</div>
+          <div *ngIf="mobile.hasError('pattern')">Invalid mobile number</div>
+        </mat-error>
+      </mat-form-field>
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="cols=='2'">&nbsp;</mat-grid-tile>
+    <mat-grid-tile>
+      Want to change password?
+      &nbsp;
+      <section class="example-section">
+        <mat-checkbox color="primary" formcontrolname="changePasswordCheckBox" name="changePassword"
+          class="example-margin" (click)="onCheck()" (click)="toggle()"></mat-checkbox>
+      </section>
+    
+    </mat-grid-tile>
+    <mat-grid-tile *ngIf="cols=='2'"></mat-grid-tile>
+    <div  [hidden]="!isExpanded" [@expandCollapse]="isExpanded?'expanded':'collapsed'">
+      <mat-grid-tile >
+        <mat-form-field>
+          <mat-label>Old Password </mat-label>
+          <input matInput [type]="hide ? 'password' : 'text'" name="password" required formControlName="oldPassword">
+          <button mat-icon-button matSuffix (click)="hide = !hide" tabindex="-1" type="button">
+            <mat-icon>{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+      <mat-grid-tile >
+        <mat-form-field>
+          <mat-label>New Password </mat-label>
+          <input matInput [type]="hide1 ? 'password' : 'text'" formControlName="newPassword" name="newPassword" required>
+          <button mat-icon-button matSuffix (click)="hide1 = !hide1" tabindex="-1" type="button">
+            <mat-icon>{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+          </button>
+        </mat-form-field>
+      </mat-grid-tile>
+    </div>
+    
+  </mat-grid-list>
+</mat-dialog-content>
+  <mat-dialog-actions style="float: right;">
+    <button mat-button type="submit" >Save</button>
+  </mat-dialog-actions>
+</form>

@@ -1,0 +1,17 @@
+<button mat-icon-button class="close-button" [mat-dialog-close]="true">
+    <mat-icon class="close-icon" >close</mat-icon>
+  </button>
+
+<h1>Thank-you for joining TeamMeet</h1>
+<h3>Enter otp sended to your email for validating your account</h3>
+
+<!-- Enter otp <input type="number" name="otpinput" id="otpinput" #otpinput> -->
+<mat-form-field class="example-full-width">
+    <mat-label>Enter OTP</mat-label>
+    <input type="text" matInput name="otpinput" placeholder="XXXXXX" minlength="6" maxlength="6" (keypress)="isNumberKey($event);" required style="letter-spacing: 22px;" #otpinput>
+</mat-form-field>
+<mat-error *ngIf="invaliderror">Invalid otp</mat-error>
+<br>
+<button mat-button type="submit" [disabled]="isdisabled" (click)="checkOtp(otpinput.value)">Verify</button>
+
+<button mat-button type="button" [disabled]="!button" (click)="resend()">{{counter}}</button>

@@ -1,0 +1,62 @@
+<div class="dashboard">
+<mat-toolbar class="dashboard-nav" style="box-shadow: 0px 2px 4px -1px rgb(0 0 0 / 20%), 0px 4px 5px 0px rgb(0 0 0 / 14%), 0px 1px 10px 0px rgb(0 0 0 / 12%);">
+  <!-- <span>TeamMeet</span> -->
+  <img src="assets/images/logo.svg" class="logo-img" alt="TeamMeet" srcset="">
+  <button mat-icon-button [matMenuTriggerFor]="menu" style="width: auto !important;">
+    <img *ngIf="profileurl" [src]=profileurl alt="Profile Picture" class="profile-icon">
+    <mat-icon *ngIf="!profileurl">menu </mat-icon>
+    <mat-icon *ngIf="profileurl">arrow_drop_down</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="openDialog()">
+      <mat-icon>manage_accounts</mat-icon>
+      <span>{{fname}}</span>
+    </button>
+    <button mat-menu-item (click)="LogOut()">
+      <mat-icon>logout</mat-icon>
+      <span>Logout</span>
+    </button>
+  </mat-menu>
+</mat-toolbar>
+
+<!-- <div><router-outlet></router-outlet></div> -->
+
+
+<mat-spinner *ngIf="loadSpinner" id="spinner"></mat-spinner>
+
+<div class="container hero-page my-5">
+  <div class="row">
+    <div class="col-lg-6 my-auto">
+      <div class="hero-text">
+        <h2>Premium video meetings.<br>Now free for everyone.</h2>
+        <p>We provide the service we built for secure business <br>Team Meet, to make it free and available
+          for all.</p>
+
+
+        <div class="input-group">
+          <div class="formobile">
+            <button type="button" class="btn1" data-mdb-ripple-color="dark" (click)="createNewRoom()">Create room</button>
+            
+          </div>
+          <form class="formobile-join">
+          <input type="text" id="roomId" class="inputbutton mx-3" minlength="6" #joinRoomInput maxlength="6" style="letter-spacing:10px;width:110px;"  (keypress)="isNumberKey($event);" placeholder="123456">
+  
+          <!-- <mat-form-field class="example-form-field room-field  mx-2" style="width: 100px;">
+            <mat-label>Room ID</mat-label>
+            <input type="tel"  matInput placeholder="XXXXXX" name="roomNo" style="letter-spacing:5px" required formControlName="mobileno"  maxlength="6">
+            
+          </mat-form-field> -->
+          
+          <button type="submit" (click)="joinRoom(joinRoomInput.value)" class="btn2 active my-auto">Join room</button>
+        </form>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-6 my-4 mb-0">
+      <div class="img">
+        <img src="assets/images/image1.png" alt="image" class="img-fluid hero-img">
+      </div>
+    </div>
+  </div>
+</div>
+</div>
